@@ -1,0 +1,24 @@
+{
+  "name": "strooptest",
+  "version": "1.0.0",
+  "description": "nodejs for writing files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon node nodejs/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cmdtrwd/StroopTest.git"
+  },
+  "author": "Jittrapol",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cmdtrwd/StroopTest/issues"
+  },
+  "homepage": "https://github.com/cmdtrwd/StroopTest#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.20"
+  }
+}
