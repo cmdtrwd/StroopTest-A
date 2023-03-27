@@ -91,6 +91,21 @@ setTimeout(() => {
 // Import I/O module
 const fs = require('fs');
 
+// Set the base file name and extension
+const baseFileName = "result";
+const extension = ".txt";
+
+// Set the initial file number
+let fileNumber = 1;
+
+// Loop until a unique file name is found
+while (fs.existsSync(`output/${baseFileName}_${fileNumber}${extension}`)){
+    fileNumber++;
+}
+
+//construct the file name
+const fileName = `output/${baseFileName}_${fileNumber}${extension}`;
+
 // Read Data
 fs.readFile("input/data.txt", "utf-8", (err, data) => {
     if (err) {
@@ -101,7 +116,7 @@ fs.readFile("input/data.txt", "utf-8", (err, data) => {
 
 // Write Data
 const outputText = "Hello test test again" + moduleA.GetDuration();
-fs.writeFileSync("output/result.txt", outputText);
+fs.writeFileSync(fileName, outputText);
 console.log("file is created!");
 
 // Import path module
