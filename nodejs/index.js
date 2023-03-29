@@ -23,54 +23,53 @@ const jsontoxml = require("jsontoxml");
 // Create a new workbook
 const workbook = XLSX.utils.book_new();
 
-// Insert data into a worksheet
-function InsertData() {
-    
-    const worksheet = XLSX.utils.json_to_sheet([
-        {
-            "First Name": "John",
-            "Last Name": "Jack",
-            "Gender": "Male",
-            "Country": "United States",
-            "Age": 28,
-            "Date": "21/09/2022",
-            "ID": 16001
-        },
-        {
-            "First Name": "Sarah",
-            "Last Name": "Fin",
-            "Gender": "Female",
-            "Country": "United States",
-            "Age": 30,
-            "Date": "22/09/2022",
-            "ID": 16002
-        },
-        {
-            "First Name": "Bob",
-            "Last Name": "Maley",
-            "Gender": "Male",
-            "Country": "Thailand",
-            "Age": 18,
-            "Date": "23/09/2022",
-            "ID": 16003
-        },
-    ]);
+// // Extract encoded data from URL query parameter
+// const queryString = window.location.search;
+// const urlParams = new URLSearchParams(queryString);
+// const encodedData = urlParams.get("data");
 
-    XLSX.utils.book_append_sheet(workbook, worksheet, "Data");
-    XLSX.writeFile(workbook, fileName);
-}
+// // Parse encoded data into JSON object
+// const data = JSON.parse(decodeURIComponent(encodedData));
 
-InsertData();
+
+
 
 // Import path module
 const path = require('path');
 
 // Import express module (After installing express module using npm)
 const express = require('express');
+const { url } = require('inspector');
+const { endianness } = require('os');
 const app = express();
 
 // Serve static files from the "public" directory
 app.use(express.static('public'));
+app.use(express.json());
+
+
+// Import cors module
+const cors = require('cors');
+const corsOptions = {
+    origin: 'http://localhost:3000/',
+    // origin: null,
+    credentials: true,
+};
+app.use(cors(corsOptions));
+
+
+// Insert data into a worksheet
+    
+app.post('/send-data', (req, res)=>{
+    // const data = JSON.stringify(req.body);
+    // const worksheet = XLSX.utils.json_to_sheet(data);
+    // XLSX.utils.book_append_sheet(workbook, worksheet, "Data");
+    // XLSX.writeFile(workbook, fileName);
+    res.send("Data received");    
+});
+
+
+
 
 // using path module to get a response from a defined path
 
